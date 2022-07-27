@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3e18c136-1262-460b-9d6e-3dbeef80a834" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/buj/rml/RosepadJarLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/buj/rml/RosepadModEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/buj/rml/annotations/NotNull.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/buj/rml/annotations/Nullable.java" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/.gitignore" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/.idea/misc.xml" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/LICENSE" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/README.md" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/build.gradle" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/gradlew" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/gradlew.bat" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/settings.gradle" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/src/main/java/net/buj/rml/RosepadJarLoader.java" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/src/main/java/net/buj/rml/RosepadModEntry.java" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/src/main/java/net/buj/rml/annotations/NotNull.java" afterDir="false" />
+      <change afterPath="/media/data/projects/java/RML/src/main/java/net/buj/rml/annotations/Nullable.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="AnnotationType" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="/media/data/projects/java/RML" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2CUTtA1rKb8qlc3P7t0l7Z1PJX3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="RML [jar]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--stacktrace" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3e18c136-1262-460b-9d6e-3dbeef80a834" name="Changes" comment="" />
+      <created>1658856376753</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1658856376753</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

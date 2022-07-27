@@ -1,0 +1,18 @@
+name = "test-mod"
+description = "Test Rosepad mod"
+author = "buj"
+version = "0.1.1"
+website = "https://projects.buj-dev.site/test-rosepad-mod"
+url = "https://github.com/RosepadMC/ExampleMod"
+environment = "both"
+
+[main]
+both = "net.buj.TestMod.TestMod"
+
+[mixin]
+server = "net.buj.TestMod.mixins.ServerMixin"
+client = "net.buj.TestMod.mixins.ClientMixin"
+
+[dependencies]
+minecraft = "1.1.0.6-dev"
+dat-random-mod = { version = "0.1.1", soft = true }
