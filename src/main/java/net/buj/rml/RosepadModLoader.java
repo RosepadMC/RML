@@ -17,7 +17,8 @@ public class RosepadModLoader {
     public final List<ClassLoader> loaders = new ArrayList<>();
     private final Map<String, Class<?>> cache = new HashMap<>();
 
-    private <T> List<T> concat(List<T> ...lists) {
+    @SafeVarargs
+    private final <T> List<T> concat(List<T>... lists) {
         List<T> list = new ArrayList<>();
         for (List<T> sub : lists) {
             list.addAll(sub);

@@ -12,6 +12,6 @@ No idea, wait until I figure out myself
 
 - Download JDK8 (not 17, 8)
 - Clone the repo
-- Do `./gradlew -Dorg.gradle.java.home=/path/to/your/jdk8 jar`
+- Do `./gradlew -Dorg.gradle.java.home=/path/to/your/jdk8 shadowJar`
 
 
