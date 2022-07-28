@@ -160,7 +160,13 @@ public class RosepadModLoader {
         if (!file.exists()) return;
 
         if (file.isFile()) {
-            loadModFromFile(env, file);
+            if (file.getName().toLowerCase(Locale.ROOT).endsWith(".jar")) loadModFromFile(env, file);
+            return;
+        }
+        if (file.isDirectory()) {
+            for (File sub : Objects.requireNonNull(file.listFiles())) {
+                loadModsFromFile(env, sub);
+            }
         }
     }
 
