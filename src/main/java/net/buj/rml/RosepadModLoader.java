@@ -148,7 +148,7 @@ public class RosepadModLoader {
 
                 loaders.add(loader);
 
-                mod.init(env);
+                mod.pre(env);
 
                 mods.add(mod);
                 meta.put(mod, rEntry);
