@@ -190,8 +190,8 @@ public class RosepadModLoader {
         return null;
     }
 
-    public void load(Environment env) {
-        loadModsFromFile(env, new File("mods")); // TODO: Use MinecraftImpl's getMinecraftDir instead
+    public void load(Environment env, File modsDir) {
+        loadModsFromFile(env, modsDir); // TODO: Use MinecraftImpl's getMinecraftDir instead
         for (Map.Entry<String, Class<?>> entry : new HashMap<>(cache).entrySet()) {
             if (entry.getValue() == null) {
                 cache.remove(entry.getKey());
