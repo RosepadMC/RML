@@ -54,10 +54,12 @@ public class RosepadModLoader {
         }
     }
 
-    private List<String> validateStrList(List<Object> authors, int type) {
-        if (authors.isEmpty() && type == 1) throw new IllegalArgumentException("No author defined");
+    private List<String> validateStrList(@Nullable List<Object> authors, int type) {
+        if ((authors == null || authors.isEmpty()) && type == 1) throw new IllegalArgumentException("No author defined");
 
         List<String> lists = new ArrayList<>();
+
+        if (authors == null) return lists;
 
         for (Object author : authors) {
             if (author instanceof String) lists.add((String) author);
