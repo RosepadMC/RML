@@ -1,0 +1,24 @@
+package net.buj.rml.registry;
+
+import net.buj.rml.NamespacedKey;
+import net.buj.rml.annotations.NotNull;
+import net.buj.rml.annotations.Nullable;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Registry<T> {
+    private final Map<NamespacedKey, T> registry = new HashMap<>();
+
+    public void register(NamespacedKey key, T value) {
+        registry.put(key, value);
+    }
+
+    public @Nullable T get(NamespacedKey key) {
+        return registry.get(key);
+    }
+
+    public @NotNull T get(NamespacedKey key, @NotNull T defaultValue) {
+        return registry.getOrDefault(key, defaultValue);
+    }
+}

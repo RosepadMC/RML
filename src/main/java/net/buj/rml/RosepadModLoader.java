@@ -84,6 +84,7 @@ public class RosepadModLoader {
             JarEntry entry = jar.getJarEntry("mod.toml");
 
             if (entry == null) {
+                jar.close();
                 return;
             }
 
@@ -199,7 +200,7 @@ public class RosepadModLoader {
     }
 
     public void load(Environment env, File modsDir) {
-        loadModsFromFile(env, modsDir); // TODO: Use MinecraftImpl's getMinecraftDir instead
+        loadModsFromFile(env, modsDir);
         for (Map.Entry<String, Class<?>> entry : new HashMap<>(cache).entrySet()) {
             if (entry.getValue() == null) {
                 cache.remove(entry.getKey());
