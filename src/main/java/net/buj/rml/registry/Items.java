@@ -5,19 +5,19 @@ import net.buj.rml.annotations.NotNull;
 import net.buj.rml.annotations.Nullable;
 import net.buj.rml.registry.Entities.Entity;
 import net.buj.rml.world.ItemStack;
+import net.buj.rml.world.World;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-// TODO: Replace Object with World
 // TODO: Replace Entity with PlayerEntity
 
 public abstract class Items extends Registry<Items.Item> {
     private final List<Items.Item[]> idList = new ArrayList<>();
     private Items.Item[] idCache = new Items.Item[0];
 
-    public abstract static class Item {
+    public abstract static class Item extends Registry.RegistryItem {
 
         // General data
         public int id;
@@ -29,7 +29,7 @@ public abstract class Items extends Registry<Items.Item> {
         public int maxDamage = 32;
         public @Nullable String name = null;
 
-        // Ton of accessors
+        // Tons of accessors
 
         public int getIconIndex() {
             return iconIndex;
@@ -103,7 +103,7 @@ public abstract class Items extends Registry<Items.Item> {
         public boolean onItemBlockClick(
                                         final ItemStack stack,
                                         final Entity playerEntity,
-                                        final Object world,
+                                        final World world,
                                         final int x,
                                         final int y,
                                         final int z,
@@ -116,7 +116,7 @@ public abstract class Items extends Registry<Items.Item> {
          */
         public ItemStack onItemUse(
                                         final ItemStack stack,
-                                        final Object world,
+                                        final World world,
                                         final Entity playerEntity) {
             return stack;
         }
@@ -152,7 +152,7 @@ public abstract class Items extends Registry<Items.Item> {
          */
         public boolean onBlockHarvest(
                                       final Blocks.Block block,
-                                      final Object world) { return false; }
+                                      final World world) { return false; }
 
         // No name for those
 

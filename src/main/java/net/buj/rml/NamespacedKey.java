@@ -32,6 +32,10 @@ public final class NamespacedKey {
         return namespace.equals(that.namespace) && key.equals(that.key);
     }
 
+    public boolean equals(String namespace, String key) {
+        return this.namespace.equals(namespace) && this.key.equals(key);
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(namespace, key);

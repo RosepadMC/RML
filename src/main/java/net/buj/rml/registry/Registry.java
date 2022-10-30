@@ -7,10 +7,19 @@ import net.buj.rml.annotations.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Registry<T> {
-    private final Map<NamespacedKey, T> registry = new HashMap<>();
+public class Registry<T extends Registry.RegistryItem> {
+    protected final Map<NamespacedKey, T> registry = new HashMap<>();
+
+    public static abstract class RegistryItem {
+        public @Nullable NamespacedKey key = null;
+
+        public NamespacedKey getKey() {
+            return key;
+        }
+    }
 
     public void register(NamespacedKey key, T value) {
+        value.key = key;
         registry.put(key, value);
     }
 
