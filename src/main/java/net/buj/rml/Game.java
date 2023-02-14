@@ -1,5 +1,6 @@
 package net.buj.rml;
 
+import net.buj.rml.options.GameOptions;
 import net.buj.rml.registry.Blocks;
 import net.buj.rml.registry.Items;
 import net.buj.rml.registry.Materials;
@@ -13,6 +14,7 @@ public class Game {
 
     public static MinecraftImpl minecraft;
     public static Environment environment;
+    public static GameOptions options;
 
     public static Items items;
     public static Blocks blocks;
