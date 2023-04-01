@@ -72,6 +72,43 @@ public abstract class GameOption<T> {
     public abstract void from(String data);
     public abstract String into();
 
+    public static class SliderChoiceGameOption extends GameOption<Integer> {
+        public SliderChoiceGameOption(String name, String[] category, Integer value, String[] values) {
+            super(name, new GameOptionUI.Slider<Integer>() {
+
+                @Override
+                public void change(GameOption<Integer> option, float percent) {
+                    option.setValue(Math.round((float) (values.length - 1) * percent));
+                }
+
+                @Override
+                public float percent(GameOption<Integer> option) {
+                    return (float) option.getValue() / (values.length - 1);
+                }
+
+                @Override
+                public String getName(GameOption<Integer> option) {
+                    return option.getDisplayName() + ": " + values[option.getValue()];
+                }
+            }, category, value);
+        }
+
+        @Override
+        public void from(String data) {
+            try {
+                setValue(Integer.parseInt(data));
+            } catch (Exception e) {
+                System.err.println("Failed to parse property " + getName());
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public String into() {
+            return getValue().toString();
+        }
+    }
+
     public static class SliderIntegerGameOption extends GameOption<Integer> {
         public SliderIntegerGameOption(String name, String[] category, Integer value, Integer min, Integer max) {
             super(name, new GameOptionUI.Slider<Integer>() {
