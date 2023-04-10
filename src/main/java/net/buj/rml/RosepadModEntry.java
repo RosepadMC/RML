@@ -10,7 +10,7 @@ public class RosepadModEntry {
     String name;
     @NotNull String id;
     @NotNull String version;
-    @NotNull Environment environment;
+    @Nullable Environment environment;
     @NotNull List<String> author;
     @Nullable
     String url;
@@ -18,6 +18,7 @@ public class RosepadModEntry {
     @Nullable String description;
     @NotNull List<String> serverMain;
     @NotNull List<String> clientMain;
+    @NotNull List<String> extensionMain;
     @NotNull List<String> serverMixin;
     @NotNull List<String> clientMixin;
 
@@ -25,13 +26,14 @@ public class RosepadModEntry {
             @NotNull String name,
             @NotNull String id,
             @NotNull String version,
-            @NotNull Environment environment,
+            @Nullable Environment environment,
             @NotNull List<String> author,
             @Nullable String url,
             @Nullable String website,
             @Nullable String description,
             @NotNull List<String> serverMain,
             @NotNull List<String> clientMain,
+            @NotNull List<String> extensionMain,
             @NotNull List<String> serverMixin,
             @NotNull List<String> clientMixin
     ) {

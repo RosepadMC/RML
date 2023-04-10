@@ -9,7 +9,7 @@ import net.buj.rml.registry.Entities;
 /**
  * Global RML values. Must be initialized before loading any mods
  */
-public class Game {
+public final class Game {
     private Game() {}
 
     public static MinecraftImpl minecraft;
@@ -20,4 +20,6 @@ public class Game {
     public static Blocks blocks;
     public static Materials materials;
     public static Entities entities;
+
+    public static RosepadModLoader modLoader;
 }

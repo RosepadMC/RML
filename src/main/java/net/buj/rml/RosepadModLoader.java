@@ -70,6 +70,8 @@ public class RosepadModLoader {
                     throw new IllegalArgumentException("Invalid main class");
                 case 3:
                     throw new IllegalArgumentException("Invalid mixin class");
+                case 4:
+                    throw new IllegalArgumentException("Invalid extension class");
             }
         }
 
@@ -115,12 +117,15 @@ public class RosepadModLoader {
                     concat(validateStrList(toml.containsPrimitive("main.client")
                             ? Collections.singletonList(Objects.requireNonNull(toml.getString("main.client")))
                             : toml.getList("main.client"), 2), bothMains),
+                    validateStrList(toml.containsPrimitive("main.loader")
+                            ? Collections.singletonList(Objects.requireNonNull(toml.getString("main.loader")))
+                            : toml.getList("main.loader"), 4),
                     concat(validateStrList(toml.containsPrimitive("mixin.server")
                             ? Collections.singletonList(Objects.requireNonNull(toml.getString("mixin.server")))
-                            : toml.getList("mixin.server"), 2), bothMixins),
+                            : toml.getList("mixin.server"), 3), bothMixins),
                     concat(validateStrList(toml.containsPrimitive("mixin.client")
                             ? Collections.singletonList(Objects.requireNonNull(toml.getString("mixin.client")))
-                            : toml.getList("mixin.client"), 2), bothMixins)
+                            : toml.getList("mixin.client"), 3), bothMixins)
             );
 
             stream.close();
@@ -148,8 +153,6 @@ public class RosepadModLoader {
                 RosepadMod mod = constructor.newInstance();
 
                 loaders.add(loader);
-
-                mod.pre(env);
 
                 mods.add(mod);
                 meta.put(mod, rEntry);
@@ -207,7 +210,15 @@ public class RosepadModLoader {
             }
         }
         for (RosepadMod mod : mods) {
-            mod.init(env);
+            mod.pre(env);
+        }
+    }
+
+    public void postInit(Environment env) {
+        for (Map.Entry<RosepadMod, RosepadModEntry> entry : meta.entrySet()) {
+            if (entry.getValue().environment != null && entry.getValue().environment != env) continue;
+
+            entry.getKey().init(env);
         }
     }
 }
