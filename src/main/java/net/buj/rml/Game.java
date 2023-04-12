@@ -1,5 +1,6 @@
 package net.buj.rml;
 
+import net.buj.rml.events.EventLoop;
 import net.buj.rml.options.GameOptions;
 import net.buj.rml.registry.Blocks;
 import net.buj.rml.registry.Items;
@@ -22,4 +23,7 @@ public final class Game {
     public static Entities entities;
 
     public static RosepadModLoader modLoader;
+    public static EventLoop eventLoop;
+
+    public static Chat chat;
 }
