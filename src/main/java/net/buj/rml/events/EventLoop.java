@@ -1,11 +1,22 @@
 package net.buj.rml.events;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public final class EventLoop {
+    private List<Runnable> queue = new ArrayList<>();
+
+    public synchronized void runOnMainThread(Runnable runnable) {
+        queue.add(runnable);
+    }
+
+    public void runQueuedFns() {
+        List<Runnable> list = new ArrayList<>(queue);
+        queue.clear();
+        for (Runnable r : list) {
+            r.run();
+        }
+    }
+
     private static class EventListenerHandle<T extends Event> {
         public EventListener<T> listener;
         public Event.Priority priority;
