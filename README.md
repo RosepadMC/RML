@@ -6,7 +6,7 @@ rather than modloader itself)
 
 ## How to write mods
 
-No idea, wait until I figure out myself
+No idea, wait until I figure out myself. For the time being, look at the [Wiki](https://alphaver.fandom.com/wiki/Rosepad_Modding) and an [example mod](https://github.com/5GameMaker/Garden)
 
 ## Building
 
