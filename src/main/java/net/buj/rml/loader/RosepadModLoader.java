@@ -1,18 +1,14 @@
-package net.buj.rml;
+package net.buj.rml.loader;
 
-import com.moandjiezana.toml.Toml;
+import net.buj.rml.Environment;
 import net.buj.rml.annotations.Nullable;
 
 import java.io.File;
-import java.io.InputStream;
-import java.lang.reflect.Constructor;
 import java.net.URL;
 import java.util.*;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 public class RosepadModLoader {
-    public final List<RosepadMod> mods = new ArrayList<>();
+    /*public final List<RosepadMod> mods = new ArrayList<>();
     public final Map<RosepadMod, RosepadModEntry> meta = new HashMap<>();
     public final List<ClassLoader> loaders = new ArrayList<>();
     private final Map<String, Class<?>> cache = new HashMap<>();
@@ -219,6 +215,93 @@ public class RosepadModLoader {
             if (entry.getValue().environment != null && entry.getValue().environment != env) continue;
 
             entry.getKey().init(env);
+        }
+    }*/
+
+    private @Nullable ClassLoader minecraftClassLoader = null;
+    private final Map<String, RosepadModEntry> mods = new HashMap<>();
+    private final List<ModCandidate> candidates = new ArrayList<>();
+
+    private List<JarLoader> loadJarsFrom(File modDir) throws Exception {
+        if (modDir.isDirectory()) {
+            List<JarLoader> loaders = new ArrayList<>();
+            File[] dir = modDir.listFiles();
+            if (dir == null) return loaders;
+            for (File file : dir) {
+                loaders.addAll(loadJarsFrom(file));
+            }
+            return loaders;
+        }
+
+        if (!modDir.getName().endsWith(".jar")) return Collections.emptyList();
+        return Collections.singletonList(new JarLoader(this, new URL[]{modDir.toURI().toURL()}));
+    }
+
+    public void register(RosepadModEntry entry) {
+        if (mods.put(entry.getID(), entry) != null) {
+            throw new IllegalStateException("Re-registering mod id " + entry.getID() + " file "
+                + entry.getLoader().getURLs()[0].getPath());
+        }
+    }
+
+    public void setMinecraftClassLoader(ClassLoader classLoader) {
+        minecraftClassLoader = classLoader;
+    }
+
+    public Class<?> findClass(String name, JarLoader skip) throws ClassNotFoundException {
+        for (RosepadModEntry entry : mods.values()) {
+            JarLoader loader = entry.getLoader();
+            if (loader == skip) continue;
+            try {
+                return loader.findClass(name, false);
+            } catch (ClassNotFoundException ignored) {}
+        }
+
+        if (minecraftClassLoader != null) {
+            return minecraftClassLoader.loadClass(name);
+        }
+
+        return Class.forName(name);
+    }
+
+    public void load(Environment environment, File modDir, GameJar gameJar) throws Exception {
+        List<JarLoader> loaders = loadJarsFrom(modDir);
+        for (JarLoader loader : loaders) {
+            RosepadModEntry entry = RosepadModEntry.from(loader, environment);
+            if (entry == null) candidates.add(new ModCandidate(loader));
+            else if (mods.put(entry.getID(), entry) != null) {
+                throw new IllegalStateException("Re-registering mod id " + entry.getID() + " file "
+                    + loader.getURLs()[0].getPath());
+            }
+        }
+
+        for (RosepadModEntry possiblyExtension : mods.values()) {
+            List<LoaderExtension> extensions = possiblyExtension.getExtensions();
+            for (LoaderExtension ext : extensions) {
+                ext.main(new ExtensionContext(candidates, gameJar, possiblyExtension.getID()));
+                for (int i = 0; i < candidates.size(); i++) {
+                    ModCandidate candidate = candidates.get(1);
+                    if (candidate.isRegistered()) {
+                        candidates.remove(i--);
+                    }
+                }
+            }
+        }
+    }
+
+    public void runPre(Environment env) throws Exception {
+        for (RosepadModEntry entry : mods.values()) {
+            for (EntryPoint point : entry.getEntryPoints()) {
+                point.pre(env);
+            }
+        }
+    }
+
+    public void runInit(Environment env) throws Exception {
+        for (RosepadModEntry entry : mods.values()) {
+            for (EntryPoint point : entry.getEntryPoints()) {
+                point.init(env);
+            }
         }
     }
 }

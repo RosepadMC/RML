@@ -1,20 +1,20 @@
 package net.buj.rml;
 
-public abstract class Chat {
+public interface Chat {
     /**
      * Clear chat
      **/
-    public abstract void clear();
+    void clear();
     /**
      * Add text to chat
-     *
+     * <p>
      * On server: write in global chat
      **/
-    public abstract void append(String text);
+    void append(String text);
     /**
      * Show chat message to player
-     *
+     * <p>
      * On client: does nothing
      **/
-    public abstract void append(String username, String text);
+    void append(String username, String text);
 }

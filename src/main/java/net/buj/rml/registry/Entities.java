@@ -5,10 +5,10 @@ import java.util.Optional;
 import net.buj.rml.Game;
 import net.buj.rml.NamespacedKey;
 import net.buj.rml.annotations.Nullable;
-import net.buj.rml.registry.Registry.RegistryItem;
 
-public class Entities extends Registry<Entities.EntityClass> {
-    public class EntityClass extends RegistryItem {
+public class Entities {
+    /*
+    public static class EntityClass extends RegistryItem {
         public Class<Entity> cls;
 
         public EntityClass(Class<Entity> _cls) {
@@ -28,7 +28,7 @@ public class Entities extends Registry<Entities.EntityClass> {
         private @Nullable NamespacedKey __key = null;
 
         public Optional<EntityClass> getEntityClass() {
-            return Game.entities.findFor(this);
+            return Game.ENTITIES.findFor(this);
         }
 
         public NamespacedKey getKey() {
@@ -36,4 +36,5 @@ public class Entities extends Registry<Entities.EntityClass> {
             throw new NullPointerException("Entity class is not registered");
         }
     }
+     */
 }

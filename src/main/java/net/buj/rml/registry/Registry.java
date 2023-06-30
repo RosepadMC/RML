@@ -10,9 +10,10 @@ import java.util.Map;
 public class Registry<T extends Registry.RegistryItem> {
     protected final Map<NamespacedKey, T> registry = new HashMap<>();
 
-    public static abstract class RegistryItem {
+    public abstract static class RegistryItem {
         public @Nullable NamespacedKey key = null;
 
+        @Nullable
         public NamespacedKey getKey() {
             return key;
         }

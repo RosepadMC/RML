@@ -1,15 +1,19 @@
-package net.buj.rml;
+package net.buj.rml.loader;
 
 import net.buj.rml.annotations.Nullable;
 
 import java.net.URL;
 import java.net.URLClassLoader;
 
-public class RosepadJarLoader extends URLClassLoader {
-    RosepadModLoader loader;
+public class JarLoader extends URLClassLoader {
+    private final RosepadModLoader loader;
 
-    public RosepadJarLoader(RosepadModLoader loader, URL[] urls, ClassLoader parent) {
-        super(urls, parent);
+    public RosepadModLoader getModLoader() {
+        return loader;
+    }
+
+    public JarLoader(RosepadModLoader loader, URL[] urls) {
+        super(urls, null); // Java class resolution sucks, I'll do it myself
         this.loader = loader;
     }
 
@@ -29,7 +33,7 @@ public class RosepadJarLoader extends URLClassLoader {
     public Class<?> findClass(String name, boolean recursive) throws ClassNotFoundException {
         Class<?> klass = tryFindClass(name);
         if (klass == null && recursive) {
-            klass = loader.tryFindClass(name);
+            return loader.findClass(name, this);
         }
         if (klass == null) throw new ClassNotFoundException();
         return klass;

@@ -1,8 +1,7 @@
 package net.buj.rml.annotations;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-
-@Retention(RetentionPolicy.CLASS)
+/**
+ * Marks a type as nullable
+ */
 public @interface Nullable {
 }
