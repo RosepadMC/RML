@@ -12,8 +12,7 @@ public class FileMan {
      */
     public boolean Exists(String path) {
         File f = new File(path);
-        if (f.exists()) return true;
-        else return false;
+        return f.exists();
     }
 
     /**
